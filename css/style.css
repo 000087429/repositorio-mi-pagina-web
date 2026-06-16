@@ -1,0 +1,70 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fdf6ec;
+    color: #333;
+}
+
+/* Encabezado */
+header {
+    background-color: #c62828;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Secciones */
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Imagen */
+.presentacion img {
+    width: 300px;
+    max-width: 90%;
+    border-radius: 10px;
+}
+
+/* Lista de pizzas */
+.tipos-pizzas {
+    background-color: #fff3e0;
+}
+
+.tipos-pizzas ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tipos-pizzas li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* Botón WhatsApp */
+.cta a {
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.cta a:hover {
+    background-color: #1ebe5d;
+}
+
+/* Pie de página */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
