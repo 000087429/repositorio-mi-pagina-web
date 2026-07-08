@@ -1,59 +1,84 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Pizzeria Trejo</title>
-<link rel="stylesheet" href="css/style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzeria Trejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+  <header class="hero">
+    <nav class="nav">
+      <a href="#" class="brand">Pizzeria Trejo</a>
+      <a href="#destacados" class="nav-link">Destacados</a>
+    </nav>
 
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="eyebrow">Pizza artesanal • entregas rápidas</p>
+        <h1>La pizza que se siente como un plan perfecto.</h1>
+        <p class="subtitle">Ingredientes frescos, corteza dorada y un sabor que conquista desde la primera porción.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#destacados">Ver menú</a>
+          <a class="btn btn-secondary" href="https://wa.me/5549523978" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </div>
 
-<header> 
-<h1>Pizzeria Trejo</h1>
-<p>Pizzas artesanales hechas con ingredientes frescos.</p>
-</header>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80" alt="Pizza artesanal recién salida del horno">
+      </div>
+    </div>
+  </header>
 
-
-<main> 
-    <section class="presentacion">
- <p>Nuestras Pizzas</p>
- <img src="img/pizzas.jpg">
- <p>Ingredientes frescos en cada pizza.</p>
+  <main>
+    <section class="about">
+      <div class="section-heading">
+        <p class="eyebrow">Nuestra propuesta</p>
+        <h2>Una pizzeria joven, sencilla y con personalidad.</h2>
+      </div>
+      <p>En Pizzeria Trejo combinamos técnica, ingredientes de calidad y una estética moderna para crear pizzas que se disfrutan con amigos, familia o en una noche especial.</p>
     </section>
 
+    <section id="destacados" class="featured">
+      <div class="section-heading">
+        <p class="eyebrow">Más pedidos</p>
+        <h2>Los favoritos de la casa</h2>
+      </div>
 
-    <section class="tipos-pizzas">
-<h2>Tipos de Pizzas</h2>
-<ul>
-  <li>Pizza Margherita. tomate, mozzarella y albahaca.</li>
-  <li>Pizza Pepperoni. mozzarella y rodajas de pepperoni.</li>
-  <li>Pizza Hawaiana. jamón, piña y mozzarella.</li>
-</ul>
-</section>
+      <div class="cards">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80" alt="Pizza Pepperoni">
+          <h3>Pepperoni Fire</h3>
+          <p>Mozzarella, pepperoni crujiente y salsa especial.</p>
+        </article>
 
-<section class="cta">
- <p>Haz tu pedido ahora mismo: </p>  
- <a href="https://wa.me/5549523978" target="_blank">Contactanos por WhatsApp</a>
-</section>
-</main>
-<footer>
-<p>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1542834369-f10ebf06d3e0?auto=format&fit=crop&w=900&q=80" alt="Pizza clásica de la casa">
+          <h3>La Clásica</h3>
+          <p>Tomate, albahaca fresca y queso derretido en cada bocado.</p>
+        </article>
 
-</p>Instagram:Pizzeria_Trejo</p>
-<p>Facebook:Pizzeria_Trejo</p>
-</footer>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=900&q=80" alt="Pizza con ingredientes premium">
+          <h3>Premium</h3>
+          <p>Jamón, champiñones y un toque de sabor intenso.</p>
+        </article>
+      </div>
+    </section>
 
+    <section class="cta-section">
+      <h2>Haz tu pedido y vive la mejor pizza de la ciudad.</h2>
+      <a class="btn btn-primary" href="https://wa.me/5549523978" target="_blank" rel="noopener">Pedir ahora</a>
+    </section>
+  </main>
 
+  <footer>
+    <p>© <span id="year"></span> Pizzeria Trejo • Instagram: @pizzeria_trejo</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
-    
-
-
-
-
-
-
 </html>

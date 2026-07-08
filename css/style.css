@@ -1,70 +1,231 @@
-/* Estilos generales */
+:root {
+  --bg: #fffaf5;
+  --surface: #ffffff;
+  --surface-soft: #fff3e8;
+  --text: #221915;
+  --muted: #6f615b;
+  --primary: #c62828;
+  --primary-dark: #9b1f1f;
+  --accent: #f4b35b;
+  --border: #f1e2d5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fdf6ec;
-    color: #333;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
 }
 
-/* Encabezado */
-header {
-    background-color: #c62828;
-    color: white;
-    text-align: center;
-    padding: 20px;
+img {
+  display: block;
+  width: 100%;
 }
 
-header h1 {
-    margin: 0;
+a {
+  text-decoration: none;
 }
 
-/* Secciones */
-section {
-    padding: 20px;
-    text-align: center;
+.hero {
+  padding: 24px 24px 48px;
+  background: linear-gradient(135deg, #fff8ef 0%, #fff1e2 100%);
 }
 
-/* Imagen */
-.presentacion img {
-    width: 300px;
-    max-width: 90%;
-    border-radius: 10px;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 32px;
 }
 
-/* Lista de pizzas */
-.tipos-pizzas {
-    background-color: #fff3e0;
+.brand {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.04em;
 }
 
-.tipos-pizzas ul {
-    list-style: none;
-    padding: 0;
+.nav-link {
+  color: var(--muted);
+  font-weight: 600;
 }
 
-.tipos-pizzas li {
-    margin: 10px 0;
-    font-size: 18px;
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Botón WhatsApp */
-.cta a {
-    display: inline-block;
-    background-color: #25D366;
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: bold;
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary);
 }
 
-.cta a:hover {
-    background-color: #1ebe5d;
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0 0 16px;
 }
 
-/* Pie de página */
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 620px;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 10px 25px rgba(198, 40, 40, 0.16);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.hero-image img {
+  border-radius: 28px;
+  height: 460px;
+  object-fit: cover;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.about,
+.featured,
+.cta-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 24px 0;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  margin: 0;
+}
+
+.about p {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 12px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.card h3,
+.card p {
+  padding: 0 18px;
+}
+
+.card h3 {
+  margin: 16px 0 6px;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.cta-section {
+  text-align: center;
+  padding-bottom: 72px;
+}
+
+.cta-section h2 {
+  margin-bottom: 18px;
+  font-size: clamp(1.4rem, 2.3vw, 1.9rem);
+}
+
 footer {
-    background-color: #333;
-    color: white;
+  background: #1f1715;
+  color: #f8eee5;
+  text-align: center;
+  padding: 24px;
+}
+
+@media (max-width: 850px) {
+  .hero-content,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image img {
+    height: 320px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding: 18px 16px 36px;
+  }
+
+  .about,
+  .featured,
+  .cta-section {
+    padding: 48px 16px 0;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn {
     text-align: center;
-    padding: 15px;
+  }
 }
