@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/config.php';
+
+$user = getCurrentUser();
+$flash = getFlash();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +19,17 @@
   <header class="hero">
     <nav class="nav">
       <a href="#" class="brand">Pizzeria Trejo</a>
-      <a href="#destacados" class="nav-link">Destacados</a>
+      <div class="nav-actions">
+        <?php if ($user): ?>
+          <span class="greeting">Hola, <?= htmlspecialchars($user['full_name']) ?></span>
+          <?php if (isAdmin()): ?>
+            <a href="dashboard.php" class="btn btn-secondary nav-link">Ir al dashboard</a>
+          <?php endif; ?>
+          <a href="logout.php" class="nav-link">Cerrar sesión</a>
+        <?php else: ?>
+          <a href="#login" class="nav-link">Iniciar sesión</a>
+        <?php endif; ?>
+      </div>
     </nav>
 
     <div class="hero-content">
@@ -27,8 +43,32 @@
         </div>
       </div>
 
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80" alt="Pizza artesanal recién salida del horno">
+      <div class="hero-side">
+        <?php if ($flash): ?>
+          <div class="flash flash-<?= htmlspecialchars($flash['type']) ?>"><?= htmlspecialchars($flash['message']) ?></div>
+        <?php endif; ?>
+
+        <?php if ($user): ?>
+          <div class="card auth-card">
+            <h3>Bienvenido</h3>
+            <p>Tu acceso quedó listo. Puedes continuar navegando o entrar al panel si eres administrador.</p>
+          </div>
+        <?php else: ?>
+          <div id="login" class="card auth-card">
+            <h3>Accede a tu cuenta</h3>
+            <form action="login.php" method="post" class="auth-form">
+              <label>
+                Correo electrónico
+                <input type="email" name="email" required>
+              </label>
+              <label>
+                Contraseña
+                <input type="password" name="password" required>
+              </label>
+              <button type="submit" class="btn btn-primary full-width">Entrar</button>
+            </form>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   </header>
