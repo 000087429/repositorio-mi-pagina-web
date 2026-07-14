@@ -1,6 +1,29 @@
 <?php
 session_start();
 
+// Load .env file if present (simple loader for local development)
+$envFile = __DIR__ . '/.env';
+if (file_exists($envFile)) {
+    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if ($line === '' || $line[0] === '#') {
+            continue;
+        }
+        if (strpos($line, '=') === false) {
+            continue;
+        }
+        list($k, $v) = explode('=', $line, 2);
+        $k = trim($k);
+        $v = trim($v);
+        if ($k !== '' && getenv($k) === false) {
+            putenv("$k=$v");
+            $_ENV[$k] = $v;
+            $_SERVER[$k] = $v;
+        }
+    }
+}
+
 const APP_NAME = 'Pizzeria Trejo';
 
 function redirect(string $path): void
@@ -47,8 +70,9 @@ function getDb(): PDO
     $host = getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: 'localhost';
     $port = getenv('DB_PORT') ?: getenv('MYSQLPORT') ?: '3306';
     $dbName = getenv('DB_NAME') ?: getenv('MYSQLDATABASE') ?: 'pizzeria_trejo';
-    $user = getenv('DB_USER') ?: getenv('MYSQLUSER') ?: 'root';
-    $password = getenv('DB_PASS') ?: getenv('MYSQLPASSWORD') ?: '';
+    // Support both DB_USER/DB_PASS and DB_USERNAME/DB_PASSWORD (Railway may provide DB_USERNAME)
+    $user = getenv('DB_USER') ?: getenv('DB_USERNAME') ?: getenv('MYSQLUSER') ?: 'root';
+    $password = getenv('DB_PASS') ?: getenv('DB_PASSWORD') ?: getenv('MYSQLPASSWORD') ?: '';
 
     $dsn = sprintf('mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4', $host, $port, $dbName);
 
