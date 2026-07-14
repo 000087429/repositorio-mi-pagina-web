@@ -67,12 +67,13 @@ function getDb(): PDO
         return $pdo;
     }
 
-    $host = getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: 'localhost';
-    $port = getenv('DB_PORT') ?: getenv('MYSQLPORT') ?: '3306';
-    $dbName = getenv('DB_NAME') ?: getenv('MYSQLDATABASE') ?: 'pizzeria_trejo';
+    // Trim env values to avoid accidental whitespace/newlines
+    $host = trim((string) (getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: 'localhost'));
+    $port = trim((string) (getenv('DB_PORT') ?: getenv('MYSQLPORT') ?: '3306'));
+    $dbName = trim((string) (getenv('DB_NAME') ?: getenv('MYSQLDATABASE') ?: 'pizzeria_trejo'));
     // Support both DB_USER/DB_PASS and DB_USERNAME/DB_PASSWORD (Railway may provide DB_USERNAME)
-    $user = getenv('DB_USER') ?: getenv('DB_USERNAME') ?: getenv('MYSQLUSER') ?: 'root';
-    $password = getenv('DB_PASS') ?: getenv('DB_PASSWORD') ?: getenv('MYSQLPASSWORD') ?: '';
+    $user = trim((string) (getenv('DB_USER') ?: getenv('DB_USERNAME') ?: getenv('MYSQLUSER') ?: 'root'));
+    $password = trim((string) (getenv('DB_PASS') ?: getenv('DB_PASSWORD') ?: getenv('MYSQLPASSWORD') ?: ''));
 
     $dsn = sprintf('mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4', $host, $port, $dbName);
 

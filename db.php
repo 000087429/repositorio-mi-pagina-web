@@ -7,12 +7,13 @@
 
 function dbConnect(): PDO
 {
-    $host = getenv('DB_HOST') ?: '127.0.0.1';
-    $port = getenv('DB_PORT') ?: '3306';
-    $dbName = getenv('DB_NAME') ?: 'pizzeria_trejo';
+    // Read env vars and trim whitespace to avoid invisible characters from the platform UI
+    $host = trim((string) (getenv('DB_HOST') ?: '127.0.0.1'));
+    $port = trim((string) (getenv('DB_PORT') ?: '3306'));
+    $dbName = trim((string) (getenv('DB_NAME') ?: 'pizzeria_trejo'));
     // Accept either DB_USER/DB_PASS or DB_USERNAME/DB_PASSWORD (Railway uses DB_USERNAME/DB_PASSWORD)
-    $user = getenv('DB_USER') ?: getenv('DB_USERNAME') ?: 'root';
-    $pass = getenv('DB_PASS') ?: getenv('DB_PASSWORD') ?: '';
+    $user = trim((string) (getenv('DB_USER') ?: getenv('DB_USERNAME') ?: 'root'));
+    $pass = trim((string) (getenv('DB_PASS') ?: getenv('DB_PASSWORD') ?: ''));
 
     $dsn = sprintf('mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4', $host, $port, $dbName);
 
